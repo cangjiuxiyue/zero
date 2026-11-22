@@ -1,14 +1,12 @@
-import { animate, scrambleText } from "https://cdn.jsdelivr.net/npm/animejs@4/+esm";
+import { animate, stagger } from "https://cdn.jsdelivr.net/npm/animejs@4/+esm";
 
-export function initScoreAnim() {
-  var btn = document.querySelector(".primary-button");
-  var scoreEl = document.querySelector("[data-score]");
-  if (!btn || !scoreEl) return; // 个人主页没这俩元素
-
-  btn.addEventListener("click", function () {
-    animate(scoreEl, {
-      innerHTML: scrambleText({ chars: "0-9" }),
-      duration: 1500,
-    });
+export function initCardsAnim() {
+  animate(".card", {
+    opacity: [0, 1],
+    translateY: [24, 0],
+    delay: stagger(120), // 每张卡错开 120ms，自动排好节奏
+    duration: 700,
+    ease: "outBack", // 弹性收尾，落地像有重量
   });
 }
+
